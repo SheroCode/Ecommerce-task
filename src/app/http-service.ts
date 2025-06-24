@@ -10,4 +10,8 @@ export class HttpService {
   getProducts() {
     return this.http.get('https://dummyjson.com/products');
   }
+
+  getProductById(id: string | number) {
+    return this.http.get(`https://dummyjson.com/products/${id}`);
+  }
 }
