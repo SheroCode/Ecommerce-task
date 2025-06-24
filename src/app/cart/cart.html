@@ -17,20 +17,20 @@
               style="object-fit: cover; height: 250px"
             />
           </div>
-          <div class="col-6">
-            <p class="text-muted text-primary ">{{product.category}}</p>
-            <h5 class="card-title">{{ product.title }}</h5>
-            <p class="text-muted small">{{ product.description }}</p>
-          </div>
-
           <div class="col-3">
-            <p class="fw-bold fs-5 mb-3">${{ product.price }}</p>
+            <p class="text-muted text-primary">{{product.category}}</p>
+            <h5 class="card-title">{{ product.title }}</h5>
+          </div>
+          <div class="col-3">
             <button
               class="btn btn-outline-danger w-50"
               (click)="remove(product.id)"
             >
               Remove
             </button>
+          </div>
+          <div class="col-3">
+            <p class="fw-bold fs-5 mb-3">${{ product.price }}</p>
           </div>
         </div>
       </div>
