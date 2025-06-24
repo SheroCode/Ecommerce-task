@@ -1,0 +1,41 @@
+<div class="container my-5">
+  <h2 class="mb-4 text-center">🛒 Your Shopping Cart</h2>
+
+  @if (cartItems().length === 0) {
+  <div class="alert alert-info text-center">Your cart is currently empty.</div>
+  } @else {
+  <div class="row g-4 justify-content-between align-items-center">
+    @for (product of cartItems(); track product.id) {
+    <div class="col-12">
+      <div class="card h-100 shadow-sm border-0">
+        <div class="row align-items-center">
+          <div class="col-3">
+            <img
+              [src]="product.thumbnail"
+              class="img-fluid"
+              alt="{{ product.title }}"
+              style="object-fit: cover; height: 250px"
+            />
+          </div>
+          <div class="col-6">
+            <p class="text-muted text-primary ">{{product.category}}</p>
+            <h5 class="card-title">{{ product.title }}</h5>
+            <p class="text-muted small">{{ product.description }}</p>
+          </div>
+
+          <div class="col-3">
+            <p class="fw-bold fs-5 mb-3">${{ product.price }}</p>
+            <button
+              class="btn btn-outline-danger w-50"
+              (click)="remove(product.id)"
+            >
+              Remove
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    }
+  </div>
+  }
+</div>

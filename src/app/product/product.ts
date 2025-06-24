@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, computed, inject, input } from '@angular/core';
+import { Component, inject, input, signal } from '@angular/core';
 import { CartService } from '../cart-service';
 
 @Component({
@@ -11,16 +11,10 @@ import { CartService } from '../cart-service';
 })
 export class Product {
   myproduct = input<any>();
-
-
-
   private cartService = inject(CartService);
+
   addToCart(product: any) {
-
-
-
     product.addedToCart = true;
-    this.cartService.increment();
-    // console.log(this.cartService.counter());
+    this.cartService.addItem(product);
   }
 }
