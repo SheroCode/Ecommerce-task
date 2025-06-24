@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
+import { ProductsPage } from "./products-page/products-page";
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, NgbDropdownModule],
+  imports: [RouterOutlet, ProductsPage],
   templateUrl: './app.html',
   styleUrl: './app.scss',
 })
 export class App {
-  protected title = 'Ecommerce-ng-bootstrap';
 }
