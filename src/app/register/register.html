@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container mt-4">
   <div class="card p-5">
     <h2 class="mb-4">Register</h2>
 
@@ -68,8 +68,9 @@
           class="form-control"
           formControlName="confirmPassword"
         />
-        @if(registerForm.get('confirmPassword')?.touched && registerForm.get('confirmPassword')?.errors){
-        @if( registerForm.get('confirmPassword')?.getError("required")){
+        @if(registerForm.get('confirmPassword')?.touched &&
+        registerForm.get('confirmPassword')?.errors){ @if(
+        registerForm.get('confirmPassword')?.getError("required")){
         <small class="text-danger">This Field is Required</small>} @if(
         registerForm.errors?.['passwordMismatch']){
         <small class="text-danger">Passwords do not match</small>

@@ -11,8 +11,14 @@ import { CartService } from '../cart-service';
 })
 export class Product {
   myproduct = input<any>();
+
+
+
   private cartService = inject(CartService);
   addToCart(product: any) {
+
+
+
     product.addedToCart = true;
     this.cartService.increment();
     // console.log(this.cartService.counter());

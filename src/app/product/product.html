@@ -1,12 +1,19 @@
-
-  <div class="card" style="width: 18rem">
-    <img [src]="myproduct()?.thumbnail" class="card-img-top" alt="..." />
-    <div class="card-body">
-      <h5 class="card-title">{{myproduct()?.title}}</h5>
-      <p class="card-text">{{myproduct()?.description}}</p>
-      <p>{{myproduct()?.price}} $</p>
-      <button href="#" class="btn btn-primary" (click)="addToCart(myproduct())"
-        >Add to cart</button>
-    </div>
+<div class="card" style="width: 18rem">
+  <img [src]="myproduct()?.thumbnail" class="card-img-top" alt="..." />
+  <div class="card-body">
+    <h5 class="card-title">{{myproduct()?.title}}</h5>
+    <p class="card-text">{{myproduct()?.description}}</p>
+    <p>{{myproduct()?.price}} $</p>
+    <button
+      href="#"
+      class="btn"
+      [ngClass]="{
+          'btn-outline-secondary': !myproduct()?.addedToCart,
+          'btn-success': myproduct()?.addedToCart
+        }"
+      (click)="addToCart(myproduct())"
+    >
+      Add to cart
+    </button>
   </div>
-
+</div>

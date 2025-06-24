@@ -1,11 +1,10 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
-import { Navbar } from '../navbar/navbar';
 import { Product } from '../product/product';
 import { HttpService } from '../http-service';
 import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-products-page',
-  imports: [Product, Navbar, CommonModule],
+  imports: [Product,CommonModule],
   templateUrl: './products-page.html',
   styleUrl: './products-page.scss',
 })
