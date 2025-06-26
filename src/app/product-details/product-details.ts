@@ -1,7 +1,8 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { HttpService } from '../http-service';
+import { HttpService, ProductFace } from '../http-service';
 import { CommonModule } from '@angular/common';
+import { CartService } from '../cart-service';
 
 @Component({
   selector: 'app-product-details',
@@ -13,24 +14,31 @@ import { CommonModule } from '@angular/common';
 export class ProductDetails implements OnInit {
   private route = inject(ActivatedRoute);
   private httpService = inject(HttpService);
+  private cartService = inject(CartService);
+  
 
-  product = signal<any>(null);
+  product = signal<ProductFace | null>(null);
 
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
       this.httpService.getProductById(id).subscribe({
-        next: (data) => this.product.set(data),
+        next: (data:any) => this.product.set(data),
         error: (err) => console.error('Error loading product details', err),
       });
     }
   }
 
   get stockStatusColor() {
-    return this.product()?.stock > 0 ? 'text-success' : 'text-danger';
+    return this.product()?.availabilityStatus ? 'bg-success' : 'text-danger';
   }
 
   get stockStatusText() {
-    return this.product()?.stock > 0 ? 'In Stock' : 'Out of Stock';
+    return this.product()?.availabilityStatus ? 'In Stock' : 'Out of Stock';
+  }
+   addToCart(event: Event, product: any) {
+    event.stopPropagation(); 
+    product.addedToCart = true;
+    this.cartService.addItem(product);
   }
 }

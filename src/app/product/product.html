@@ -1,25 +1,36 @@
 <div
   class="card text-decoration-none text-dark"
   style="cursor: pointer"
-  (click)="goToDetails(myproduct()?.id)"
- 
+  (click)="goToDetails(myproduct()?.id!)"
 >
+  <div class="text-end">
+    <i
+      class="bi fs-3"
+      [class.bi-heart-fill]="isInWishlist(myproduct())"
+      [class.bi-heart]="!isInWishlist(myproduct())"
+      [class.text-danger]="isInWishlist(myproduct())"
+      (click)="toggleWishlist($event, myproduct())"
+      style="cursor: pointer"
+    ></i>
+  </div>
+
   <img [src]="myproduct()?.thumbnail" class="card-img-top" alt="..." />
+
   <div class="card-body">
     <h5 class="card-title">{{ myproduct()?.title }}</h5>
     <p class="card-text">{{ myproduct()?.description }}</p>
     <p>{{ myproduct()?.price }} $</p>
 
-    <!-- Add to cart button -->
+    <!-- Toggle Add/Remove from Cart -->
     <button
       class="btn"
       [ngClass]="{
-        'btn-outline-secondary': !myproduct()?.addedToCart,
-        'btn-success': myproduct()?.addedToCart
+        'btn-outline-secondary': !isInCart(myproduct()),
+        'btn-danger': isInCart(myproduct())
       }"
-      (click)="addToCart($event, myproduct())"
+      (click)="toggleCart($event, myproduct())"
     >
-      Add to cart
+      {{ isInCart(myproduct()) ? 'Remove from Cart' : 'Add to Cart' }}
     </button>
   </div>
 </div>

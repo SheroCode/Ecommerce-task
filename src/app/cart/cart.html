@@ -9,7 +9,8 @@
     <div class="col-12">
       <div class="card h-100 shadow-sm border-0">
         <div class="row align-items-center">
-          <div class="col-3">
+          <!-- Product Image -->
+          <div class="col-lg-3 ">
             <img
               [src]="product.thumbnail"
               class="img-fluid"
@@ -17,25 +18,70 @@
               style="object-fit: cover; height: 250px"
             />
           </div>
-          <div class="col-3">
-            <p class="text-muted text-primary">{{product.category}}</p>
+
+          <!-- Title and Unit Price -->
+          <div class="col-lg-3">
+            <p class="text-muted text-primary">{{ product.category }}</p>
             <h5 class="card-title">{{ product.title }}</h5>
+            <p class="fw-bold fs-5 mb-3">${{ product.price }} x 1</p>
           </div>
-          <div class="col-3">
-            <button
-              class="btn btn-outline-danger w-50"
+
+          <!-- Quantity Controls -->
+          <div class="col-lg-3">
+            <div class="btn-group my-2 my-md-0" role="group">
+              <button
+                class="btn btn-outline-success"
+                (click)="increase(product.id)"
+              >
+                +
+              </button>
+              <button class="btn btn-outline-secondary" disabled>
+                {{ product.quantity }}
+              </button>
+              <button
+                class="btn btn-outline-danger"
+                (click)="decrease(product.id)"
+                [disabled]="product.quantity <= 1"
+              >
+                -
+              </button>
+            </div>
+          </div>
+
+          <!-- Total Price for Product -->
+          <div class="col-lg-3">
+            <p class="fw-bold fs-5 mb-3">
+              ${{ roundToTwo(product.price * product.quantity) }}
+            </p>
+          </div>
+
+          <!-- Remove Icon -->
+          <div class="col-lg-3">
+            <i
+              class="bi bi-trash3-fill text-danger fs-3"
               (click)="remove(product.id)"
-            >
-              Remove
-            </button>
-          </div>
-          <div class="col-3">
-            <p class="fw-bold fs-5 mb-3">${{ product.price }}</p>
+              role="button"
+            ></i>
           </div>
         </div>
       </div>
     </div>
     }
+  </div>
+
+  <!-- Cart Total + Actions -->
+  <div class="row">
+    <div class="col-12 mt-5">
+      <h3>Total Price: $ {{ totalPrice() }}</h3>
+    </div>
+    <div class="col-12">
+      <div class="d-flex justify-content-end mt-5 gap-3">
+        <button type="button" class="btn btn-primary fs-5">Check Out</button>
+        <button type="button" class="btn btn-danger fs-5" (click)="clear()">
+          Clear Cart
+        </button>
+      </div>
+    </div>
   </div>
   }
 </div>

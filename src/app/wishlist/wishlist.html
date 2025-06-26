@@ -1,0 +1,38 @@
+<div class="container my-5">
+  <h2>My Wishlist {{ store.totalCount() }}</h2>
+
+  @if (wishlist().length == 0) {
+  <div class="alert alert-info text-center">Your wishlist is empty..</div>
+  } @else {
+  <div class="row g-4 justify-content-between align-items-center">
+    @for (item of wishlist(); track item.id) {
+    <div class="col-12">
+      <div class="card h-100 shadow-sm border-0">
+        <div class="row align-items-center">
+          <div class="col-3">
+            <img
+              [src]="item.thumbnail"
+              class="img-fluid"
+              alt="{{ item.title }}"
+              style="object-fit: cover; height: 250px"
+            />
+          </div>
+          <div class="col-3">
+            <p class="text-muted text-primary">{{item.description}}</p>
+            <h5 class="card-title">{{ item.title }}</h5>
+          </div>
+          <div class="col-3">
+            <button class="btn btn-danger" (click)="removeItem(item.id)">
+              Remove from Wishlist
+            </button>
+          </div>
+          <div class="col-3">
+            <p class="fw-bold fs-5 mb-3">${{ item.price }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    }
+  </div>
+  }
+</div>

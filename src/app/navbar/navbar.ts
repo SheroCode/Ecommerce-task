@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { CartService } from '../cart-service';
 import { RouterModule } from '@angular/router';
+import { wishlistStore } from '../strores/wishlist.store';
 
 @Component({
   selector: 'app-navbar',
@@ -10,4 +11,6 @@ import { RouterModule } from '@angular/router';
 })
 export class Navbar {
   cartCounter = inject(CartService).counter;
+  total=inject(wishlistStore).totalCount
+
 }

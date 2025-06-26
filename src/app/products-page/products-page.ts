@@ -1,15 +1,15 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
-import { Product } from '../product/product';
-import { HttpService } from '../http-service';
+import { HttpService, ProductFace } from '../http-service';
 import { CommonModule } from '@angular/common';
+import { Product } from "../product/product";
 @Component({
   selector: 'app-products-page',
-  imports: [Product,CommonModule],
+  imports: [CommonModule, Product],
   templateUrl: './products-page.html',
   styleUrl: './products-page.scss',
 })
 export class ProductsPage implements OnInit {
-  myProducts = signal<any[]>([]);
+  myProducts = signal<ProductFace[]>([]);
   httpService = inject(HttpService);
 
   ngOnInit() {
@@ -28,3 +28,5 @@ export class ProductsPage implements OnInit {
     });
   }
 }
+
+

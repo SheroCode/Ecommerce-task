@@ -12,12 +12,33 @@ export class CartService {
   }
 
   addItem(product: any) {
-    // prevent duplicate adds
     const exists = this.items().find((p) => p.id === product.id);
     if (!exists) {
-      this.items.update((current) => [...current, product]);
+      const productWithQuantity = { ...product, quantity: 1 };
+      this.items.update((current) => [...current, productWithQuantity]);
       this.counter.update((count) => count + 1);
     }
+  }
+
+  increaseQuantity(productId: number) {
+    this.items.update((currentItems) =>
+      currentItems.map((item) =>
+        item.id === productId
+          ? { ...item, quantity: item.quantity + 1 }
+          : item
+      )
+    );
+  }
+
+  decreaseQuantity(productId: number) {
+    this.items.update((currentItems) =>
+      currentItems.map((item) => {
+        if (item.id === productId && item.quantity > 1) {
+          return { ...item, quantity: item.quantity - 1 };
+        }
+        return item;
+      })
+    );
   }
 
   removeItem(productId: number) {
