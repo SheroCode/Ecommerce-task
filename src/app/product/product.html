@@ -19,6 +19,8 @@
   <div class="card-body">
     <h5 class="card-title">{{ myproduct()?.title }}</h5>
     <p class="card-text">{{ myproduct()?.description?.slice(0,40) }}...</p>
+
+    <ngbd-rating-decimal [rating]="myproduct()?.rating"></ngbd-rating-decimal>
     <p class="card-text fw-semibold text-success"> {{ myproduct()?.price }} $</p>
 
     <!-- Toggle Add/Remove from Cart -->

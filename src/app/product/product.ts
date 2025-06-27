@@ -1,14 +1,15 @@
+import { CommonModule } from '@angular/common';
 import { Component, inject, input } from '@angular/core';
 import { Router } from '@angular/router';
 import { CartService } from '../cart-service';
-import { CommonModule } from '@angular/common';
-import { wishlistStore } from '../strores/wishlist.store';
 import { ProductFace } from '../interfaces/product.intrefaces';
+import { wishlistStore } from '../strores/wishlist.store';
+import { NgbdRatingDecimal } from '../rating-decimal/rating-decimal';
 
 @Component({
   selector: 'app-product',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule,NgbdRatingDecimal],
   templateUrl: './product.html',
   styleUrl: './product.scss',
 })

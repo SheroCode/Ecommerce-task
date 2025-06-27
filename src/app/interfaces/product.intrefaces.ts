@@ -15,4 +15,5 @@ export interface ProductFace {
 
 export interface CartProduct extends ProductFace {
   quantity: number;
+  addedToCart:boolean;
 }
