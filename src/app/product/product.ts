@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { CartService } from '../cart-service';
 import { CommonModule } from '@angular/common';
 import { wishlistStore } from '../strores/wishlist.store';
-import { ProductFace } from '../http-service';
+import { ProductFace } from '../interfaces/product.intrefaces';
 
 @Component({
   selector: 'app-product',

@@ -1,0 +1,11 @@
+@if (productimages().length > 0) {
+  <ngb-carousel>
+    @for (img of productimages(); track img) {
+      <ng-template ngbSlide>
+        <img [src]="img" class="d-block w-100" alt="Product image" />
+      </ng-template>
+    }
+  </ngb-carousel>
+} @else {
+  <div class="alert alert-warning text-center">No product images available.</div>
+}

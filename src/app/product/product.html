@@ -3,9 +3,9 @@
   style="cursor: pointer"
   (click)="goToDetails(myproduct()?.id!)"
 >
-  <div class="text-end">
+  <div class="text-end px-3 pt-2">
     <i
-      class="bi fs-3"
+      class="bi fs-3 "
       [class.bi-heart-fill]="isInWishlist(myproduct())"
       [class.bi-heart]="!isInWishlist(myproduct())"
       [class.text-danger]="isInWishlist(myproduct())"
@@ -18,14 +18,14 @@
 
   <div class="card-body">
     <h5 class="card-title">{{ myproduct()?.title }}</h5>
-    <p class="card-text">{{ myproduct()?.description }}</p>
-    <p>{{ myproduct()?.price }} $</p>
+    <p class="card-text">{{ myproduct()?.description?.slice(0,40) }}...</p>
+    <p class="card-text fw-semibold text-success"> {{ myproduct()?.price }} $</p>
 
     <!-- Toggle Add/Remove from Cart -->
     <button
       class="btn"
       [ngClass]="{
-        'btn-outline-secondary': !isInCart(myproduct()),
+        'btn-outline-primary': !isInCart(myproduct()),
         'btn-danger': isInCart(myproduct())
       }"
       (click)="toggleCart($event, myproduct())"

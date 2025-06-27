@@ -1,17 +1,20 @@
 import { Injectable, signal } from '@angular/core';
+import { CartProduct } from './interfaces/product.intrefaces';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CartService {
-  private items = signal<any[]>([]);
+
+  // cart items//
+  private items = signal<CartProduct[]>([]);
   counter = signal(0);
 
   get cartItems() {
     return this.items.asReadonly();
   }
 
-  addItem(product: any) {
+  addItem(product: CartProduct) {
     const exists = this.items().find((p) => p.id === product.id);
     if (!exists) {
       const productWithQuantity = { ...product, quantity: 1 };

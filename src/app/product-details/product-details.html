@@ -4,11 +4,14 @@
   <div class="card mx-auto p-5">
     <div class="row">
       <div class="col-md-5">
-        <img
+        <!-- <img
           [src]="product()?.thumbnail"
           class="img-fluid rounded"
           alt="Product image"
-        />
+        /> -->
+        <ngbd-carousel-basic [productimages]="product()?.images ?? []" />
+       
+
       </div>
       <div class="col-md-7">
         <h2>{{ product()?.title }}</h2>
@@ -21,25 +24,25 @@
         <hr />
         <div class="d-flex gap-5 align-items-center">
           <p
-            class="fw-bold px-3 py-1 rounded-5 text-center text-light "
+            class="fw-bold px-3 py-1 rounded-5 text-center text-light"
             [ngClass]="stockStatusColor"
           >
             {{ stockStatusText }}
           </p>
           <p>
             Only
-            <span class="text-warning fw-bold">{{product()?.availabilityStatus}} Items</span>
+            <span class="text-warning fw-bold">{{product()?.stock}} Items</span>
             Left! <br />
             Don't miss it
           </p>
         </div>
-        <hr>
-          <button
-      class="btn btn-outline-success rounded-5 fw-semibold"
-      (click)="addToCart($event, product())"
-    >
-      Add to cart
-    </button>
+        <hr />
+        <button
+          class="btn btn-outline-success rounded-5 fw-semibold"
+          (click)="addToCart( product())"
+        >
+          Add to cart
+        </button>
       </div>
     </div>
   </div>

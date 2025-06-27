@@ -2,3 +2,11 @@
 
 /* Importing Bootstrap SCSS file. */
 @import 'bootstrap/scss/bootstrap';
+::ng-deep .carousel-control-prev-icon,
+::ng-deep .carousel-control-next-icon {
+  background-color: rgba(16, 16, 16, 0.7); /* dark semi-transparent */
+  border-radius: 50%;
+  background-size: 100% 100%;
+  width: 3rem;
+  height: 3rem;
+}
