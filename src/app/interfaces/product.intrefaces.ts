@@ -11,9 +11,8 @@ export interface ProductFace {
   discountPercentage: number;
   brand: string;
   images: string[];
-}
-
-export interface CartProduct extends ProductFace {
   quantity: number;
   addedToCart:boolean;
 }
+
+

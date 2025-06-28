@@ -1,10 +1,10 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { HttpService } from '../http-service';
 import { CommonModule } from '@angular/common';
-import { CartService } from '../cart-service';
-import { ProductFace } from '../interfaces/product.intrefaces';
 import { NgbdCarouselBasic } from '../carousel-basic/carousel-basic';
+import { HttpService } from '../../services/http-service';
+import { CartService } from '../../services/cart-service';
+import { ProductFace } from '../../interfaces/product.intrefaces';
 @Component({
   selector: 'app-product-details',
   imports: [CommonModule,NgbdCarouselBasic],

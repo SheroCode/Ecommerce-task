@@ -5,32 +5,32 @@ export const routes: Routes = [
   {
     path: 'home',
     loadComponent: () =>
-      import('./products-page/products-page').then((m) => m.ProductsPage),
+      import('./components/products-page/products-page').then((m) => m.ProductsPage),
   },
   {
     path: 'login',
-    loadComponent: () => import('./login/login').then((m) => m.Login),
+    loadComponent: () => import('./components/login/login').then((m) => m.Login),
   },
   {
     path: 'register',
-    loadComponent: () => import('./register/register').then((m) => m.Register),
+    loadComponent: () => import('./components/register/register').then((m) => m.Register),
   },
   {
     path: 'cart',
-    loadComponent: () => import('./cart/cart').then((m) => m.Cart),
+    loadComponent: () => import('./components/cart/cart').then((m) => m.Cart),
   },
   {
     path: 'wishlist',
-    loadComponent: () => import('./wishlist/wishlist').then((m) => m.Wishlist),
+    loadComponent: () => import('./components/wishlist/wishlist').then((m) => m.Wishlist),
   },
   {
     path: 'product/:id',
     loadComponent: () =>
-      import('./product-details/product-details').then((m) => m.ProductDetails),
+      import('./components/product-details/product-details').then((m) => m.ProductDetails),
   },
   {
     path: '**',
     loadComponent: () =>
-      import('./not-found/not-found').then((m) => m.NotFound),
+      import('./components/not-found/not-found').then((m) => m.NotFound),
   },
 ];

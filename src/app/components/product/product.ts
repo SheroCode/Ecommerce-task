@@ -1,10 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject, input } from '@angular/core';
 import { Router } from '@angular/router';
-import { CartService } from '../cart-service';
-import { ProductFace } from '../interfaces/product.intrefaces';
-import { wishlistStore } from '../strores/wishlist.store';
 import { NgbdRatingDecimal } from '../rating-decimal/rating-decimal';
+import { ProductFace } from '../../interfaces/product.intrefaces';
+import { CartService } from '../../services/cart-service';
+import { wishlistStore } from '../../strores/wishlist.store';
 
 @Component({
   selector: 'app-product',

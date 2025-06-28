@@ -1,8 +1,8 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
-import { HttpService } from '../http-service';
 import { CommonModule } from '@angular/common';
 import { Product } from "../product/product";
-import { ProductFace } from '../interfaces/product.intrefaces';
+import { ProductFace } from '../../interfaces/product.intrefaces';
+import { HttpService } from '../../services/http-service';
 @Component({
   selector: 'app-products-page',
   imports: [CommonModule, Product],

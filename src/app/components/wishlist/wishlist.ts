@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
-import { wishlistStore } from '../strores/wishlist.store';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { wishlistStore } from '../../strores/wishlist.store';
 
 @Component({
   selector: 'app-wishlist',

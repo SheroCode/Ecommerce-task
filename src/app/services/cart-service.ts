@@ -1,5 +1,5 @@
 import { Injectable, signal } from '@angular/core';
-import { CartProduct } from './interfaces/product.intrefaces';
+import { ProductFace } from '../interfaces/product.intrefaces';
 
 @Injectable({
   providedIn: 'root',
@@ -7,14 +7,14 @@ import { CartProduct } from './interfaces/product.intrefaces';
 export class CartService {
 
   // cart items//
-  private items = signal<CartProduct[]>([]);
+  private items = signal<ProductFace[]>([]);
   counter = signal(0);
 
   get cartItems() {
     return this.items.asReadonly();
   }
 
-  addItem(product: CartProduct) {
+  addItem(product: ProductFace) {
     const exists = this.items().find((p) => p.id === product.id);
     if (!exists) {
       const productWithQuantity = { ...product, quantity: 1 };
